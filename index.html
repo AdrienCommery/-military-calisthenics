@@ -7,8 +7,10 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <title>Military Calisthenics</title>
-  <link rel="manifest" href="manifest.json" />
-  <link rel="stylesheet" href="styles.css" />
+    <style>
+:root{--bg:#0b0f14;--card:#151b23;--card2:#10161d;--text:#f5f7fa;--muted:#98a2b3;--line:#27303b;--accent:#d6f36a;--danger:#ff7a7a;--safe:#73e2a7;--shadow:0 12px 30px rgba(0,0,0,.25)}*{box-sizing:border-box}html{background:var(--bg)}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:linear-gradient(180deg,#0b0f14,#10151c 35%,#0b0f14);color:var(--text);min-height:100vh;padding-bottom:90px}.topbar{display:flex;justify-content:space-between;align-items:center;padding:calc(18px + env(safe-area-inset-top)) 18px 12px;position:sticky;top:0;z-index:20;background:rgba(11,15,20,.88);backdrop-filter:blur(18px);border-bottom:1px solid rgba(255,255,255,.04)}h1,h2,h3,p{margin-top:0}h1{font-size:1.35rem;margin-bottom:0}h2{font-size:1.45rem;margin-bottom:8px}h3{font-size:1.02rem;margin-bottom:8px}.eyebrow{font-size:.7rem;letter-spacing:.15em;font-weight:800;color:var(--accent);margin-bottom:5px}.muted{color:var(--muted)}main{max-width:720px;margin:0 auto;padding:16px}.view{display:none}.view.active{display:block}.card{background:linear-gradient(180deg,var(--card),var(--card2));border:1px solid var(--line);border-radius:20px;padding:18px;box-shadow:var(--shadow);margin-bottom:14px}.hero{display:flex;justify-content:space-between;gap:16px;align-items:center}.hero p:last-child{margin-bottom:0;color:var(--muted);line-height:1.45}.hero.compact{display:block}.badge{display:grid;place-items:center;min-width:76px;height:76px;border-radius:50%;border:6px solid rgba(214,243,106,.22);color:var(--accent);font-weight:900;font-size:.8rem}.grid.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}.stat span{display:block;color:var(--muted);font-size:.82rem}.stat strong{font-size:2rem;margin-right:5px}.stat small{color:var(--muted)}.section-title{display:flex;justify-content:space-between;align-items:end;gap:10px;margin:8px 2px 12px}.section-title h2,.section-title h3{margin:0}.section-title span{color:var(--muted);font-size:.8rem}.progress{height:10px;background:#202833;border-radius:999px;overflow:hidden}.progress>div{height:100%;width:0;background:var(--accent);transition:.25s}.stack{display:grid;gap:10px}.workout-card{display:flex;justify-content:space-between;align-items:center;background:#10161d;border:1px solid var(--line);border-radius:16px;padding:15px;cursor:pointer}.workout-card.done{border-color:rgba(115,226,167,.45)}.workout-card .left b{display:block;font-size:1rem}.workout-card .left span{color:var(--muted);font-size:.82rem}.workout-card .arrow{font-size:1.4rem;color:var(--accent)}button{font:inherit}.primary,.ghost,.back,.link{border:0;border-radius:14px;padding:12px 14px;font-weight:800}.primary{background:var(--accent);color:#10150b}.ghost{background:#202833;color:var(--text);border:1px solid var(--line)}.back,.link{background:transparent;color:var(--muted);padding-left:0}.hidden{display:none!important}.exercise{background:linear-gradient(180deg,var(--card),var(--card2));border:1px solid var(--line);border-radius:18px;padding:15px}.exercise-top{display:flex;justify-content:space-between;gap:12px}.exercise h3{margin-bottom:4px}.exercise .meta{color:var(--muted);font-size:.82rem}.set-row{display:grid;grid-template-columns:36px 1fr 84px 42px;gap:8px;align-items:center;margin-top:10px}.set-row input{width:100%;background:#0c1117;border:1px solid var(--line);color:var(--text);border-radius:12px;padding:10px}.check{width:38px;height:38px;border-radius:12px;border:1px solid var(--line);background:#10161d;color:transparent}.check.checked{background:var(--safe);color:#07120c}.rest{margin-top:10px;width:100%}.sticky-action{position:sticky;bottom:82px;padding-top:8px}.sticky-action .primary{width:100%;box-shadow:0 12px 25px rgba(214,243,106,.18)}.bottomnav{position:fixed;left:50%;transform:translateX(-50%);bottom:0;width:min(720px,100%);display:grid;grid-template-columns:repeat(3,1fr);padding:9px 12px calc(9px + env(safe-area-inset-bottom));background:rgba(9,13,18,.94);backdrop-filter:blur(20px);border-top:1px solid var(--line);z-index:30}.bottomnav button{background:transparent;border:0;color:var(--muted);font-size:.75rem;font-weight:700}.bottomnav button span{display:block;font-size:1.25rem;margin-bottom:3px}.bottomnav button.active{color:var(--accent)}.form-grid{display:grid;gap:12px}.form-grid label{display:grid;gap:6px;color:var(--muted);font-size:.82rem}.form-grid input{background:#0c1117;border:1px solid var(--line);color:var(--text);border-radius:14px;padding:13px;font-size:1rem}.history-item{display:grid;grid-template-columns:1.2fr repeat(3,1fr);gap:8px;padding:12px 0;border-bottom:1px solid var(--line);font-size:.82rem}.history-item:last-child{border-bottom:0}.history-item b{font-size:.86rem}.phase b{color:var(--accent);font-size:.78rem;text-transform:uppercase;letter-spacing:.1em}.note ul{padding-left:20px;color:var(--muted);line-height:1.55}dialog{border:0;background:transparent}dialog::backdrop{background:rgba(0,0,0,.72);backdrop-filter:blur(5px)}.timer-card{min-width:min(88vw,380px);background:#111821;border:1px solid var(--line);border-radius:24px;padding:26px;text-align:center;color:var(--text)}#timerValue{font-size:4rem;font-weight:900;font-variant-numeric:tabular-nums;margin:14px 0 20px}.timer-actions{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}.timer-actions button{padding:11px 8px}.timer-card .link{margin-top:10px}@media(max-width:420px){.grid.two{grid-template-columns:1fr 1fr}.hero{align-items:flex-start}.badge{min-width:66px;height:66px}.set-row{grid-template-columns:32px 1fr 72px 38px}.history-item{grid-template-columns:1.2fr repeat(3,.9fr)}}
+
+</style>
 </head>
 <body>
   <header class="topbar">
@@ -112,6 +114,68 @@
     </div>
   </dialog>
 
-  <script src="app.js"></script>
+  <script>
+const workouts = {
+  alpha:{name:'ALPHA',subtitle:'Push + jambes',duration:'45–60 min',exercises:[
+    ['Squat poids du corps','4 × 12–20','90'],['Pompes inclinées / classiques','4 × 6–15','90'],['Fentes arrière','3 × 8–12 / jambe','75'],['Pompes prise serrée adaptée','3 × 6–12','75'],['Bulgarian split squat','3 × 8–12 / jambe','90'],['Mollets debout','3 × 15–25','60'],['Planche','3 × 30–60 s','60']
+  ]},
+  bravo:{name:'BRAVO',subtitle:'Pull + chaîne postérieure',duration:'45–60 min',exercises:[
+    ['Hip bridge','4 × 15–20','75'],['Tractions assistées / négatives','4 × 3–10','120'],['Row inversé','4 × 6–15','90'],['Single-leg hip bridge','3 × 10–15 / côté','75'],['Squat cosaque léger','3 × 6–10 / côté','75'],['Dead bug','3 × 8–12 / côté','60'],['Side plank','3 × 20–45 s / côté','60']
+  ]},
+  charlie:{name:'CHARLIE',subtitle:'Full Body Force',duration:'45–60 min',exercises:[
+    ['Squat tempo 3-1-X','4 × 8–12','90'],['Pompes tempo','4 × 6–12','90'],['Fentes bulgares tempo','3 × 8–10 / jambe','90'],['Row inversé','4 × 8–12','90'],['Pike push-up adaptée','3 × 5–10','90'],['Single-leg hip bridge','3 × 10–15','75'],['Hollow hold','3 × 20–40 s','60']
+  ]},
+  delta:{name:'DELTA',subtitle:'Military Conditioning',duration:'30–45 min',exercises:[
+    ['Air squats','5 tours × 15','45'],['Pompes adaptées','5 tours × 8–12','45'],['Fentes alternées','5 tours × 10 / jambe','45'],['Mountain climbers','5 tours × 20','30'],['Hip bridges','5 tours × 10','30'],['Planche','5 tours × 20–30 s','30'],['Marche rapide','5 tours × 60–90 s','60']
+  ]}
+};
+
+const state = JSON.parse(localStorage.getItem('mc_state') || '{"logs":[],"completed":[],"currentWeek":1}');
+const save = ()=>localStorage.setItem('mc_state',JSON.stringify(state));
+const qs=s=>document.querySelector(s);
+const qsa=s=>[...document.querySelectorAll(s)];
+
+function nav(id){qsa('.view').forEach(v=>v.classList.remove('active'));qs('#'+id).classList.add('active');qsa('.bottomnav button').forEach(b=>b.classList.toggle('active',b.dataset.nav===id));window.scrollTo({top:0,behavior:'smooth'});}qsa('[data-nav]').forEach(b=>b.addEventListener('click',()=>nav(b.dataset.nav)));
+
+function renderDashboard(){
+  const latest=[...state.logs].sort((a,b)=>b.date.localeCompare(a.date))[0];
+  qs('#weightNow').textContent=latest?.weight || '—'; qs('#waistNow').textContent=latest?.waist || '—';
+  qs('#weekLabel').textContent=`Semaine ${state.currentWeek}/12`;
+  const doneThisWeek=state.completed.filter(x=>x.week===state.currentWeek).length;
+  qs('#weeklyProgress').style.width=`${Math.min(100,doneThisWeek/4*100)}%`;
+  qs('#weeklyText').textContent=`${doneThisWeek}/4 séances terminées cette semaine.`;
+  const wrap=qs('#workoutCards');wrap.innerHTML='';
+  Object.entries(workouts).forEach(([key,w])=>{
+    const done=state.completed.some(x=>x.week===state.currentWeek&&x.workout===key);
+    const el=document.createElement('div');el.className='workout-card'+(done?' done':'');
+    el.innerHTML=`<div class="left"><b>${done?'✓ ':''}${w.name}</b><span>${w.subtitle} · ${w.duration}</span></div><div class="arrow">›</div>`;
+    el.onclick=()=>openWorkout(key);wrap.appendChild(el);
+  });
+}
+
+let currentWorkout=null;
+function setsFromText(t){const m=t.match(/^(\d+)/);return m?Number(m[1]):3;}
+function openWorkout(key){currentWorkout=key;const w=workouts[key];qs('#workoutHeader').innerHTML=`<p class="eyebrow">${w.name}</p><h2>${w.subtitle}</h2><p>${w.duration} · Garde 1 à 3 répétitions en réserve sur la majorité des séries.</p>`;const wrap=qs('#exerciseList');wrap.innerHTML='';w.exercises.forEach((ex,idx)=>{const count=setsFromText(ex[1]);const el=document.createElement('article');el.className='exercise';el.innerHTML=`<div class="exercise-top"><div><h3>${idx+1}. ${ex[0]}</h3><div class="meta">Cible : ${ex[1]}</div></div></div><div>${Array.from({length:count},(_,i)=>`<div class="set-row"><span>S${i+1}</span><input inputmode="decimal" placeholder="réps / sec"><input inputmode="decimal" placeholder="RPE"><button class="check">✓</button></div>`).join('')}</div><button class="ghost rest" data-rest="${ex[2]}">Repos ${formatTime(Number(ex[2]))}</button>`;wrap.appendChild(el)});qsa('.check').forEach(b=>b.onclick=()=>b.classList.toggle('checked'));qsa('.rest').forEach(b=>b.onclick=()=>startTimer(Number(b.dataset.rest)));nav('workout');}
+
+qs('#finishWorkout').addEventListener('click',()=>{if(!currentWorkout)return;const exists=state.completed.some(x=>x.week===state.currentWeek&&x.workout===currentWorkout);if(!exists)state.completed.push({week:state.currentWeek,workout:currentWorkout,date:new Date().toISOString()});save();renderDashboard();nav('dashboard');});
+
+qs('#progressForm').addEventListener('submit',e=>{e.preventDefault();const log={date:qs('#logDate').value,weight:qs('#logWeight').value,waist:qs('#logWaist').value,pushups:qs('#logPushups').value};state.logs=state.logs.filter(x=>x.date!==log.date);state.logs.push(log);save();renderHistory();renderDashboard();});
+
+function renderHistory(){const wrap=qs('#history');const arr=[...state.logs].sort((a,b)=>b.date.localeCompare(a.date));wrap.innerHTML=arr.length?arr.map(x=>`<div class="history-item"><b>${new Date(x.date+'T12:00:00').toLocaleDateString('fr-FR')}</b><span>${x.weight||'—'} kg</span><span>${x.waist||'—'} cm</span><span>${x.pushups||'—'} pompes</span></div>`).join(''):'<p class="muted">Aucune mesure enregistrée.</p>';}
+
+let timer=null,remaining=90,running=false;
+function formatTime(s){const m=Math.floor(s/60),r=s%60;return `${String(m).padStart(2,'0')}:${String(r).padStart(2,'0')}`;}
+function paintTimer(){qs('#timerValue').textContent=formatTime(Math.max(0,remaining));}
+function startTimer(seconds){remaining=seconds;running=true;paintTimer();qs('#timerToggle').textContent='Pause';qs('#timerDialog').showModal();clearInterval(timer);timer=setInterval(()=>{if(running){remaining--;paintTimer();if(remaining<=0){running=false;clearInterval(timer);if(navigator.vibrate)navigator.vibrate([180,90,180]);}}},1000);}
+qs('#timerToggle').onclick=()=>{running=!running;qs('#timerToggle').textContent=running?'Pause':'Reprendre';};qs('#minus15').onclick=()=>{remaining=Math.max(0,remaining-15);paintTimer();};qs('#plus15').onclick=()=>{remaining+=15;paintTimer();};qs('#closeTimer').onclick=()=>{qs('#timerDialog').close();clearInterval(timer);};
+
+qs('#logDate').value=new Date().toISOString().slice(0,10);
+
+let deferredPrompt;window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredPrompt=e;qs('#installBtn').classList.remove('hidden');});qs('#installBtn').onclick=async()=>{if(!deferredPrompt)return;deferredPrompt.prompt();await deferredPrompt.userChoice;deferredPrompt=null;qs('#installBtn').classList.add('hidden');};
+
+
+renderDashboard();renderHistory();
+
+</script>
 </body>
 </html>
