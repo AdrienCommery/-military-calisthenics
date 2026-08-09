@@ -1,0 +1,60 @@
+const workouts = {
+  alpha:{name:'ALPHA',subtitle:'Push + jambes',duration:'45–60 min',exercises:[
+    ['Squat poids du corps','4 × 12–20','90'],['Pompes inclinées / classiques','4 × 6–15','90'],['Fentes arrière','3 × 8–12 / jambe','75'],['Pompes prise serrée adaptée','3 × 6–12','75'],['Bulgarian split squat','3 × 8–12 / jambe','90'],['Mollets debout','3 × 15–25','60'],['Planche','3 × 30–60 s','60']
+  ]},
+  bravo:{name:'BRAVO',subtitle:'Pull + chaîne postérieure',duration:'45–60 min',exercises:[
+    ['Hip bridge','4 × 15–20','75'],['Tractions assistées / négatives','4 × 3–10','120'],['Row inversé','4 × 6–15','90'],['Single-leg hip bridge','3 × 10–15 / côté','75'],['Squat cosaque léger','3 × 6–10 / côté','75'],['Dead bug','3 × 8–12 / côté','60'],['Side plank','3 × 20–45 s / côté','60']
+  ]},
+  charlie:{name:'CHARLIE',subtitle:'Full Body Force',duration:'45–60 min',exercises:[
+    ['Squat tempo 3-1-X','4 × 8–12','90'],['Pompes tempo','4 × 6–12','90'],['Fentes bulgares tempo','3 × 8–10 / jambe','90'],['Row inversé','4 × 8–12','90'],['Pike push-up adaptée','3 × 5–10','90'],['Single-leg hip bridge','3 × 10–15','75'],['Hollow hold','3 × 20–40 s','60']
+  ]},
+  delta:{name:'DELTA',subtitle:'Military Conditioning',duration:'30–45 min',exercises:[
+    ['Air squats','5 tours × 15','45'],['Pompes adaptées','5 tours × 8–12','45'],['Fentes alternées','5 tours × 10 / jambe','45'],['Mountain climbers','5 tours × 20','30'],['Hip bridges','5 tours × 10','30'],['Planche','5 tours × 20–30 s','30'],['Marche rapide','5 tours × 60–90 s','60']
+  ]}
+};
+
+const state = JSON.parse(localStorage.getItem('mc_state') || '{"logs":[],"completed":[],"currentWeek":1}');
+const save = ()=>localStorage.setItem('mc_state',JSON.stringify(state));
+const qs=s=>document.querySelector(s);
+const qsa=s=>[...document.querySelectorAll(s)];
+
+function nav(id){qsa('.view').forEach(v=>v.classList.remove('active'));qs('#'+id).classList.add('active');qsa('.bottomnav button').forEach(b=>b.classList.toggle('active',b.dataset.nav===id));window.scrollTo({top:0,behavior:'smooth'});}qsa('[data-nav]').forEach(b=>b.addEventListener('click',()=>nav(b.dataset.nav)));
+
+function renderDashboard(){
+  const latest=[...state.logs].sort((a,b)=>b.date.localeCompare(a.date))[0];
+  qs('#weightNow').textContent=latest?.weight || '—'; qs('#waistNow').textContent=latest?.waist || '—';
+  qs('#weekLabel').textContent=`Semaine ${state.currentWeek}/12`;
+  const doneThisWeek=state.completed.filter(x=>x.week===state.currentWeek).length;
+  qs('#weeklyProgress').style.width=`${Math.min(100,doneThisWeek/4*100)}%`;
+  qs('#weeklyText').textContent=`${doneThisWeek}/4 séances terminées cette semaine.`;
+  const wrap=qs('#workoutCards');wrap.innerHTML='';
+  Object.entries(workouts).forEach(([key,w])=>{
+    const done=state.completed.some(x=>x.week===state.currentWeek&&x.workout===key);
+    const el=document.createElement('div');el.className='workout-card'+(done?' done':'');
+    el.innerHTML=`<div class="left"><b>${done?'✓ ':''}${w.name}</b><span>${w.subtitle} · ${w.duration}</span></div><div class="arrow">›</div>`;
+    el.onclick=()=>openWorkout(key);wrap.appendChild(el);
+  });
+}
+
+let currentWorkout=null;
+function setsFromText(t){const m=t.match(/^(\d+)/);return m?Number(m[1]):3;}
+function openWorkout(key){currentWorkout=key;const w=workouts[key];qs('#workoutHeader').innerHTML=`<p class="eyebrow">${w.name}</p><h2>${w.subtitle}</h2><p>${w.duration} · Garde 1 à 3 répétitions en réserve sur la majorité des séries.</p>`;const wrap=qs('#exerciseList');wrap.innerHTML='';w.exercises.forEach((ex,idx)=>{const count=setsFromText(ex[1]);const el=document.createElement('article');el.className='exercise';el.innerHTML=`<div class="exercise-top"><div><h3>${idx+1}. ${ex[0]}</h3><div class="meta">Cible : ${ex[1]}</div></div></div><div>${Array.from({length:count},(_,i)=>`<div class="set-row"><span>S${i+1}</span><input inputmode="decimal" placeholder="réps / sec"><input inputmode="decimal" placeholder="RPE"><button class="check">✓</button></div>`).join('')}</div><button class="ghost rest" data-rest="${ex[2]}">Repos ${formatTime(Number(ex[2]))}</button>`;wrap.appendChild(el)});qsa('.check').forEach(b=>b.onclick=()=>b.classList.toggle('checked'));qsa('.rest').forEach(b=>b.onclick=()=>startTimer(Number(b.dataset.rest)));nav('workout');}
+
+qs('#finishWorkout').addEventListener('click',()=>{if(!currentWorkout)return;const exists=state.completed.some(x=>x.week===state.currentWeek&&x.workout===currentWorkout);if(!exists)state.completed.push({week:state.currentWeek,workout:currentWorkout,date:new Date().toISOString()});save();renderDashboard();nav('dashboard');});
+
+qs('#progressForm').addEventListener('submit',e=>{e.preventDefault();const log={date:qs('#logDate').value,weight:qs('#logWeight').value,waist:qs('#logWaist').value,pushups:qs('#logPushups').value};state.logs=state.logs.filter(x=>x.date!==log.date);state.logs.push(log);save();renderHistory();renderDashboard();});
+
+function renderHistory(){const wrap=qs('#history');const arr=[...state.logs].sort((a,b)=>b.date.localeCompare(a.date));wrap.innerHTML=arr.length?arr.map(x=>`<div class="history-item"><b>${new Date(x.date+'T12:00:00').toLocaleDateString('fr-FR')}</b><span>${x.weight||'—'} kg</span><span>${x.waist||'—'} cm</span><span>${x.pushups||'—'} pompes</span></div>`).join(''):'<p class="muted">Aucune mesure enregistrée.</p>';}
+
+let timer=null,remaining=90,running=false;
+function formatTime(s){const m=Math.floor(s/60),r=s%60;return `${String(m).padStart(2,'0')}:${String(r).padStart(2,'0')}`;}
+function paintTimer(){qs('#timerValue').textContent=formatTime(Math.max(0,remaining));}
+function startTimer(seconds){remaining=seconds;running=true;paintTimer();qs('#timerToggle').textContent='Pause';qs('#timerDialog').showModal();clearInterval(timer);timer=setInterval(()=>{if(running){remaining--;paintTimer();if(remaining<=0){running=false;clearInterval(timer);if(navigator.vibrate)navigator.vibrate([180,90,180]);}}},1000);}
+qs('#timerToggle').onclick=()=>{running=!running;qs('#timerToggle').textContent=running?'Pause':'Reprendre';};qs('#minus15').onclick=()=>{remaining=Math.max(0,remaining-15);paintTimer();};qs('#plus15').onclick=()=>{remaining+=15;paintTimer();};qs('#closeTimer').onclick=()=>{qs('#timerDialog').close();clearInterval(timer);};
+
+qs('#logDate').value=new Date().toISOString().slice(0,10);
+
+let deferredPrompt;window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredPrompt=e;qs('#installBtn').classList.remove('hidden');});qs('#installBtn').onclick=async()=>{if(!deferredPrompt)return;deferredPrompt.prompt();await deferredPrompt.userChoice;deferredPrompt=null;qs('#installBtn').classList.add('hidden');};
+
+if('serviceWorker' in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js'));
+renderDashboard();renderHistory();
